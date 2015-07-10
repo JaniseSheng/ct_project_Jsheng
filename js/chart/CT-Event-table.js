@@ -201,7 +201,7 @@ var myTable = {
 
         //业务类型
         var wrapper_4_1 = "<form class='form_drop_down'><select id='Bustype' style='padding: 6px 12px;'>";
-        var wrapper_4_2 = "<option value='0' selected='true' disabled='true'>宽带（受理)</option>";
+        var wrapper_4_2 = "<option value='0' name='WB_A' selected='true' disabled='true'>宽带（受理)</option>";
         var wrapper_4_3 = "<option value='0' name='WB_A'>宽带（受理)</option>";
         var wrapper_4_4 = "<option value='1' name='WB_B'>宽带（发展)</option>";
         var wrapper_4_5 = "<option value='2' name='CDMA_A'>移动号线（受理)</option>";
