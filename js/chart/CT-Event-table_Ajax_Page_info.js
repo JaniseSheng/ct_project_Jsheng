@@ -567,7 +567,8 @@ var Set_Page_Info = {
         other_Fac.set_table2_2(".Detailed_box ul ul", STORE_NAME, ZERO_DAYS);
     },
     set_page2_6info: function () {
-        document.getElementById('Date_input').valueAsDate = new Date();
+        $("#Date_input").val(other_Fac._getBeforeDate(1));
+
         $("#Storetop10").click(function () {
             console.log(getinfo.page_2_6_Date().length);
             var strs = getinfo.page_2_6_Date();
@@ -742,6 +743,29 @@ var other_Fac = {
         mon = d.getMonth() + 1;
         day = d.getDate();
         s = year + "" + (mon < 10 ? ("0" + mon) : mon) + (day < 10 ? ("0" + day) : day);
+        return s;
+    },
+    //带“-”格式
+    _getBeforeDate: function (n) {
+        var n = n;
+        var d = new Date();
+        var year = d.getFullYear();
+        var mon = d.getMonth() + 1;
+        var day = d.getDate();
+        if (day <= n) {
+            if (mon > 1) {
+                mon = mon - 1;
+            }
+            else {
+                year = year - 1;
+                mon = 12;
+            }
+        }
+        d.setDate(d.getDate() - n);
+        year = d.getFullYear();
+        mon = d.getMonth() + 1;
+        day = d.getDate();
+        s = year + "-" + (mon < 10 ? ("0" + mon) : mon) +"-"+ (day < 10 ? ("0" + day) : day);
         return s;
     },
 //获取某月的天数
