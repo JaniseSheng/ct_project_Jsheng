@@ -1,0 +1,68 @@
+#sub-list,
+#list {
+  overflow: hidden;
+  @media (max-width: 767px) {
+    margin: 0 -24px;
+  }
+
+  > li > ul {
+    overflow: hidden;
+  }
+
+  > li > h2 {
+    display: block;
+    padding: 8px 24px;
+    background-color: lighten(@silver, 16%);
+    border-top: 1px solid @silver;
+    border-bottom: 1px solid @silver;
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+  li.sub-content {
+    width: 100% !important;
+    position: relative;
+    &:after {
+      content: "";
+      height: 1px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 64px;
+      background-color: @silver;
+    }
+    &:last-child {
+      &:after {
+        background-color: transparent;
+      }
+    }
+  }
+  a {
+    display: block;
+    padding: 12px 24px 12px 64px;
+    -webkit-transition: background 0.3s;
+    transition: background 0.3s;
+
+    &:active {
+      background-color: fade(@silver, 35%);
+    }
+    > i {
+      font-size: 2.8rem;
+      height: 2.8rem;
+      color: @dodger_blue;
+      position: absolute;
+      left: 24px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+    > span {
+      color: @dark_gray;
+      margin-top: 6px;
+      display: block;
+    }
+  }
+}
+
+#sub-list {
+  margin-top: 24px;
+}

@@ -1,0 +1,26 @@
+#st-container {
+
+}
+
+#wrapper {
+  background-color: @white;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  /* Prevent native touch events on Windows */
+  -ms-touch-action: none;
+}
+
+#scroller {
+  /* Prevent elements to be highlighted on tap */
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  /* Put the scroller into the HW Compositing layer right from the start */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  padding-bottom: 96px;
+}
+

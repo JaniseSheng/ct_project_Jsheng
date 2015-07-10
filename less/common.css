@@ -1,0 +1,166 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+  font-size: 62.5%;
+  /*10 ÷ 16 × 100% = 62.5%*/
+  /* iPhone 5 (portrait and landscape) */
+  /* iPhone 6 (portrait and landscape) */
+  /* iPhone 6 Plus (portrait) */
+  /* Other smartphones with smaller screen (portrait and landscape) */
+  /* iPads 1/2 iPad Mini (portrait and landscape) */
+  /* iPad 3/4 (portrait and landscape) */
+}
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  html {
+    font-size: 60%;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 568px) {
+  html {
+    font-size: 60%;
+  }
+}
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+  html {
+    font-size: 60%;
+  }
+}
+@media only screen and (min-width: 414px) and (max-width: 736px) and (orientation: portrait) {
+  html {
+    font-size: 60%;
+  }
+}
+@media only screen and (max-width: 319px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  html {
+    font-size: 90%;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  html {
+    font-size: 62.5%;
+  }
+}
+html.w-mod-touch * {
+  background-attachment: scroll !important;
+}
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
+body {
+  margin: 0;
+  height: 100% !important;
+  min-height: 100%;
+  padding: 6.4rem 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lantinghei SC", "Hiragino Sans GB", STHeiti, "Noto Sans S Chinese", "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 1.6rem;
+  /*1.6 × 10px = 16px */
+  line-height: 2rem;
+  background-position: center, center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+p {
+  margin: 0px;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  font-weight: 400;
+}
+.w-clearfix:before {
+  content: " ";
+  display: table;
+}
+.w-clearfix:after {
+  clear: both;
+  content: " ";
+  display: table;
+}
+.w-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 767px;
+  position: relative;
+}
+.w-container:before {
+  content: " ";
+  display: table;
+}
+.w-container:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+@media (max-width: 767px) {
+  .w-container {
+    width: 100%;
+    padding-right: 4.8rem;
+    padding-left: 4.8rem;
+  }
+}
+@media (max-width: 479px) {
+  .w-container {
+    padding-right: 2.4rem;
+    padding-left: 2.4rem;
+  }
+}
+input[type='range'],
+input[type='range']:focus,
+input[type='range']:active,
+input[type='range']::-moz-focus-inner,
+input[type='range']::-moz-focus-outer,
+input[type='range']:-moz-focusring {
+  border: 0;
+  outline: none;
+}
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-user-select: text !important;
+}
+input ::-ms-expand {
+  display: none;
+}
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+::-webkit-input-placeholder {
+  color: rgba(123, 123, 123, 0.5);
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: rgba(123, 123, 123, 0.5);
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(123, 123, 123, 0.5);
+}
+:-ms-input-placeholder {
+  color: rgba(123, 123, 123, 0.5);
+}

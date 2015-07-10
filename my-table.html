@@ -1,0 +1,81 @@
+
+<html>
+    <head>
+        <title>小翼&amp;看表</title>
+        <!--<meta http-equiv="Content-Type" charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1"/>-->
+        
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, height=device-height,initial-scale=1, user-scalable=no, minimal-ui" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <!-- 启用360浏览器的极速模式(webkit) -->
+        <meta name="renderer" content="webkit">
+        <!-- 避免IE使用兼容模式 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+        <meta name="HandheldFriendly" content="true">
+        <!-- 微软的老式浏览器 -->
+        <meta name="MobileOptimized" content="320">
+        <!-- uc强制竖屏 -->
+        <meta name="screen-orientation" content="portrait">
+        <!-- QQ强制竖屏 -->
+        <meta name="x5-orientation" content="portrait">
+        <!-- UC强制全屏 -->
+        <meta name="full-screen" content="yes">
+        <!-- QQ强制全屏 -->
+        <meta name="x5-fullscreen" content="true">
+        <!-- UC应用模式 -->
+        <meta name="browsermode" content="application">
+        <!-- QQ应用模式 -->
+        <meta name="x5-page-mode" content="app">
+        <!-- windows phone 点击无高光 -->
+        <meta name="msapplication-tap-highlight" content="no">
+
+        <link rel="stylesheet" type="text/css" href="less/main.css"/>
+        <link rel="stylesheet" type="text/css" href="less/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="less/normalize.css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="images/icon32.gif"/>
+        <link rel="apple-touch-icon" type="image/x-icon" href="images/icon256.gif"/>
+
+    </head>
+    <body>
+        <div id="st-container" class="st-container">
+            <nav id="menu" class="st-menu st-effect">
+                <div class="profile-pic"></div>
+                <h2 id="js_UserName">用户</h2><a class="logout"><i class="icon-power"></i></a>
+                <ul>
+                    <li><a href="my-site.html"><i class="icon-home"></i>我的地盘</a></li>
+                    <li><a href="my-backpack.html"><i class="icon-satchel"></i>我的背包</a></li>
+                    <li><a href="my-table.html"><i class="icon-pie_chart"></i>小翼看表</a></li>
+                    <li><a href="my-activity.html"><i class="icon-calendar"></i>我的活动</a></li>
+                    <li><a href="my-warning.html"><i class="icon-file_information"></i>预警派单</a></li>
+                    <li><a href="my-notice.html"><i class="icon-electronic_megaphone"></i>系统公告</a></li>
+                    <li><a href="#"><i class="icon-users_three"></i>朋友圈</a></li>
+                    <li><a href="#"><i class="icon-winners_podium"></i>排名</a></li>
+                    <li><a href="#"><i class="icon-cogs"></i>设置</a></li>
+                </ul>
+            </nav>
+            <div class="st-pusher">
+                <div id="st-trigger-effects">
+                    <div class="w-container header">
+                    </div>
+                </div>
+                <div class="container">
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/lib/modernizr.js"></script>
+        <script type="text/javascript" src="js/lib/jquery-1.11.3.js"></script>
+        <script type="text/javascript" src="js/lib/jquery.cookie.js"></script>
+
+        <script type="text/javascript" src="js/common/common.js"></script>
+        <script type="text/javascript" src="js/common/loginUser.js"></script>
+
+        <script type="application/javascript" src="js/chart/CT-Event-table.js"></script>
+        <script type="application/javascript" src="js/chart/CT-Event-table_Ajax_Page_info.js"></script>
+
+
+    </body>
+</html>

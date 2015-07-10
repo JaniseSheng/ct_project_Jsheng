@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <script type="text/javascript" src="js/lib/DES.js"></script>
+	<script type="text/javascript" src="js/lib/base64.js"></script> -->
+	<script type="text/javascript" src="js/lib/CryptoJS v3.1.2/rollups/aes.js"></script>
+	<script type="text/javascript">
+		// var str = 'lyhTIEm7KIGstB++sLKzn//4m18r91FoWFVRs8vb10LWlrADfgOL0g==';
+		var s = "1234567890abcdefg一二三四五";
+		
+		// var ss = des("BBSBBSBB",s,1);
+
+		// var a = base64encode(ss)
+		// console.log(a);
+		// // var b4 = base64decode(ss);
+		// // var key = 'BBSBBSBB';
+		// console.log(ss);
+		// 
+		// 
+		    var keyHex = CryptoJS.enc.Utf8.parse("BBSBBSBB");
+		    // direct decrypt ciphertext
+		    // var decrypted = CryptoJS.DES.decrypt({
+		    //     ciphertext: CryptoJS.enc.Base64.parse('lyhTIEm7KIGstB++sLKzn//4m18r91FoWFVRs8vb10LWlrADfgOL0g==')
+		    // }, keyHex, {
+		    //     mode: CryptoJS.mode.ECB,
+		    //     padding: CryptoJS.pad.Pkcs7
+		    // });
+		    // console.log(decrypted.toString(CryptoJS.enc.Utf8));
+	</script>
+</body>
+</html>
+
+
+{
+    "server":"192.168.0.17",
+    "server_port":8388,
+    "local_port":1080,
+    "password":"111111",
+    "timeout":600,
+    "method":"table"
+}
