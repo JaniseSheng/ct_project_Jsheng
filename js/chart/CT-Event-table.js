@@ -542,6 +542,10 @@ var getinfo = {
         var info = $("#Bustype option:selected").attr("name");
         return info;
     },
+    page_2_2_titleDisplay: function () {
+        var info = $("#Bustype option:selected").text();
+        return info;
+    },
     page_2_4_Date_select: function () {
         var info = $("#Date_select_2_4 option:selected").attr("value");
         return info;

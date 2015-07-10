@@ -337,6 +337,7 @@ var Set_Page_Info = {
     set_page2_1_info: function () {
         myTable.setPage_myTable_2_1();
         JQ_pageAll_DATE = [];
+        JQ_pageAll_Mobile.name="移动";
         JQ_pageAll_Mobile.data = [];
         JQ_pageAll_Broadband.data = [];
         JQ_pageAll_Terminal.data = [];
@@ -363,6 +364,8 @@ var Set_Page_Info = {
         other_Fac.set_table(".Detailed_box ul ul", JQ_pageAll_DATE, JQ_pageAll_Mobile.data, JQ_pageAll_Broadband.data, JQ_pageAll_Terminal.data, ":00");
     },
     set_page2_2info: function () {
+        JQ_pageAll_Mobile.name="宽带(受理)";//初始化设置图片头部tips
+        $("#span_bustype").text("宽带(受理)");//初始化设置表格的文字
         other_Fac.Page_2_2_settime_Ajax(0, "WB_A", "0");
 
         $("#table2_2_search").click(function () {
@@ -370,8 +373,9 @@ var Set_Page_Info = {
             //var index_type = getinfo.page_2_2_Datatype_select();
             var index_type = 0;
             var Bus_type = getinfo.page_2_2_Bustype_select();
-            $("#span_bustype").text(Bus_type + "受理数");
-            JQ_pageAll_Mobile.name = Bus_type;
+            var BusText = getinfo.page_2_2_titleDisplay();
+            $("#span_bustype").text(BusText);
+            JQ_pageAll_Mobile.name = BusText;
             console.log("业务类型"+JQ_pageAll_Mobile);
             other_Fac.Page_2_2_settime_Ajax(index_mun, Bus_type, index_type);
         });
@@ -660,7 +664,7 @@ var other_Fac = {
             var mobile_index = _mobile[i];
             var Broadband_index = _broadband[i];
             var Terminal_index = _terminal[i];
-            var li_content = "<li><span>" + timeindex + addothername + "</span><span>" + mobile_index + "</span><span>" + Broadband_index + "</span><span>" + Terminal_index + "</span></li>";
+            var li_content = "<li><span>" +timeindex+":00</span><span>" + mobile_index + "</span><span>" + Broadband_index + "</span><span>" + Terminal_index + "</span></li>";
             $(_obj_name).append(li_content);
         }
     },

@@ -397,8 +397,12 @@ input[type="date"]:before {
   position: relative;
 }
 .st-container {
+  background-color: white;
   position: relative;
   /*  overflow-y: scroll;*/
+  height: 100%;
+}
+#wrapper {
   height: 100%;
 }
 .container {
@@ -513,6 +517,25 @@ input[type="date"]:before {
   font-weight: 400;
   -webkit-transition: background 0.3s;
   transition: background 0.3s;
+  position: relative;
+}
+.st-menu ul li a > #menuMySite,
+.st-menu ul li a #menuMybackpack,
+.st-menu ul li a #menuMyTable,
+.st-menu ul li a #menuMyActivity,
+.st-menu ul li a #menuMyWarning,
+.st-menu ul li a #menuMyNotice,
+.st-menu ul li a #menuMyFriends,
+.st-menu ul li a #menuMyRink,
+.st-menu ul li a #menuMySetting {
+  position: absolute;
+  display: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background-color: red;
+  top: 0.6rem;
+  right: 0.6rem;
 }
 .st-menu ul li a i {
   display: block;
