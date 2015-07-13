@@ -1750,6 +1750,47 @@ ul.assessment > li > form select {
 ul.assessment > li > textarea {
   margin-top: 12px;
 }
+
+ul.assessment >li> .subul{
+  &>li{
+    padding: 12px 0;
+    border-bottom: 1px solid #bdc3c7;
+    &:last-child{
+      border: none;
+      margin-bottom: 24px;
+    }
+
+    &>h5{
+      display: inline-block;
+      float: left;
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    &>span{
+      float: left;
+      clear: left;
+      color: #919ba2;
+      font-size: 1.4rem;
+    }
+    &>form{
+      float: right;
+      &>select{
+        width: auto;
+        float: right;
+        border: none;
+        background-color: #3498db;
+        padding: 8px 24px;
+        color: #ffffff;
+      }
+    }
+    &>textarea{
+      margin-top: 12px;
+    }
+  }
+
+}
+
 .calendar, .Flow_table {
   min-height: 250px;
   background-color: #bdc3c7;
@@ -2090,7 +2131,7 @@ i.icon_xybk_14{
 
 .form_drop_down{
   position: relative;
-  &:after{
+/*  &:after{
     position: absolute;
     display: inline-table;
     color: #3498db ;
@@ -2099,7 +2140,7 @@ i.icon_xybk_14{
     top: 0;
     bottom: 0;
     margin: auto 0;
-  }
+  }*/
 }
 
 /*机器排队流量监控*/
@@ -2258,4 +2299,47 @@ input.file_input{
 
 #saleOPtion{
   margin-top: 24px;
+
 }
+
+//营业厅台账
+#busHallLedger{
+  & span {
+    font-size: 12px !important;
+    &:first-of-type{
+      width:70% !important;
+    }
+  }
+}
+
+#busSelect{
+  &>select{
+    margin: 12px 0;
+  }
+}
+
+.arrowDown{
+  position: absolute;
+  font-size: 24px;
+  color: rgb(52, 152, 219);
+  right: 6px;
+  height: 24px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+.arrowDown1 , .arrowDown2{
+  position: absolute;
+  height: 20px;
+  font-size: 24px;
+  right: 6px;
+}
+.arrowDown1
+{
+  top:20px;
+}
+.arrowDown2
+{
+  top:72px;
+}
+

@@ -1750,6 +1750,41 @@ ul.assessment > li > form select {
 ul.assessment > li > textarea {
   margin-top: 12px;
 }
+ul.assessment > li > .subul > li {
+  padding: 12px 0;
+  border-bottom: 1px solid #bdc3c7;
+}
+ul.assessment > li > .subul > li:last-child {
+  border: none;
+  margin-bottom: 24px;
+}
+ul.assessment > li > .subul > li > h5 {
+  display: inline-block;
+  float: left;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+ul.assessment > li > .subul > li > span {
+  float: left;
+  clear: left;
+  color: #919ba2;
+  font-size: 1.4rem;
+}
+ul.assessment > li > .subul > li > form {
+  float: right;
+}
+ul.assessment > li > .subul > li > form > select {
+  width: auto;
+  float: right;
+  border: none;
+  background-color: #3498db;
+  padding: 8px 24px;
+  color: #ffffff;
+}
+ul.assessment > li > .subul > li > textarea {
+  margin-top: 12px;
+}
 .calendar,
 .Flow_table {
   min-height: 250px;
@@ -2056,16 +2091,16 @@ i.icon_xybk_14 {
 }
 .form_drop_down {
   position: relative;
-}
-.form_drop_down:after {
-  position: absolute;
-  display: inline-table;
-  color: #3498db ;
-  content: "\25BC";
-  right: 12px;
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
+  /*  &:after{
+    position: absolute;
+    display: inline-table;
+    color: #3498db ;
+    content: "\25BC";
+    right: 12px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+  }*/
 }
 /*机器排队流量监控*/
 .machine_flow > li {
@@ -2198,4 +2233,36 @@ input.file_input {
 }
 #saleOPtion {
   margin-top: 24px;
+}
+#busHallLedger span {
+  font-size: 12px !important;
+}
+#busHallLedger span:first-of-type {
+  width: 70% !important;
+}
+#busSelect > select {
+  margin: 12px 0;
+}
+.arrowDown {
+  position: absolute;
+  font-size: 24px;
+  color: #3498db;
+  right: 6px;
+  height: 24px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+.arrowDown1,
+.arrowDown2 {
+  position: absolute;
+  height: 20px;
+  font-size: 24px;
+  right: 6px;
+}
+.arrowDown1 {
+  top: 20px;
+}
+.arrowDown2 {
+  top: 72px;
 }

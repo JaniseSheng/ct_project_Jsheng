@@ -1,7 +1,7 @@
 //服务器请求地址
 
 //var baseQuestUrl = "http://10.145.205.75:8082/entityChannel-web";
- var baseQuestUrl = "http://222.68.185.232:9080/EntityChannelInteface";
+var baseQuestUrl = "http://222.68.185.232:9080/EntityChannelInteface";
 //var baseQuestUrl = "http://happyfish2010.oicp.net:8082/entityChannel-web";
 //var baseQuestUrl = "http://10.145.205.75:8082/entityChannel-web";
 

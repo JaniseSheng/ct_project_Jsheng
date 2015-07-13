@@ -64,35 +64,35 @@ var myTable = {
         var wrapper_1_2 = "<li class='more-content'><a><i class='icon-net_closed'></i><form class='form_drop_down'><select style='padding: 6px 12px;'>";
         var wrapper_1_3 = "<option value='' selected='true' disabled='true'>选择渠道类型</option>";
         var wrapper_1_4 = "<option value=''>渠道类型1</option>";
-        var wrapper_1_5 = "</select></form></a></li>";
+        var wrapper_1_5 = "</select><i class='arrowDown icon-ic_keyboard_arrow_down_24px'></i></form></a></li>";
         var wrapper_1 = wrapper_1_1 + wrapper_1_2 + wrapper_1_3 + wrapper_1_5;
 
         //选择所属区局
         var wrapper_2_1 = "<li class='more-content'><a><i class='icon-ic_apps_24px'></i><form class='form_drop_down'><select style='padding: 6px 12px;'>";
         var wrapper_2_2 = "<option value='' selected='true' disabled='true'>选择所属区局</option>";
         var wrapper_2_3 = "<option value=''>所属区局1</option>";
-        var wrapper_2_4 = "</select></form></a></li>";
+        var wrapper_2_4 = "</select><i class='arrowDown icon-ic_keyboard_arrow_down_24px'></i></form></a></li>";
         var wrapper_2 = wrapper_2_1 + wrapper_2_2 + wrapper_2_4;
 
         //选择所属公司
         var wrapper_3_1 = "<li class='more-content'><a><i class='icon-world_times'></i><form class='form_drop_down'><select style='padding: 6px 12px;'>";
         var wrapper_3_2 = "<option value='' selected='true' disabled='true'>选择所属分局</option>";
         var wrapper_3_3 = "<option value=''>所属公司1</option>";
-        var wrapper_3_4 = "</select></form></a></li>";
+        var wrapper_3_4 = "</select><i class='arrowDown icon-ic_keyboard_arrow_down_24px'></i></form></a></li>";
         var wrapper_3 = wrapper_3_1 + wrapper_3_2 + wrapper_3_4;
 
         //选择代理商
         var wrapper_4_1 = "<li class='more-content'><a><i class='icon-id'></i><form class='form_drop_down'><select style='padding: 6px 12px;'>";
         var wrapper_4_2 = "<option value='' selected='true' disabled='true'>选择代理商</option>";
         var wrapper_4_3 = "<option value=''>选择代理商1</option>";
-        var wrapper_4_4 = "</select></form></a></li>";
+        var wrapper_4_4 = "</select><i class='arrowDown icon-ic_keyboard_arrow_down_24px'></i></form></a></li>";
         var wrapper_4 = wrapper_4_1 + wrapper_4_2 + wrapper_4_4;
 
         //选择门店
         var wrapper_5_1 = "<li class='more-content'><a><i class='icon-home'></i><form class='form_drop_down'><select style='padding: 6px 12px;'>";
         var wrapper_5_2 = "<option value='' selected='true' disabled='true'>选择门店</option>";
         var wrapper_5_3 = "<option value=''>门店1</option>";
-        var wrapper_5_4 = "</select></form></a></li>";
+        var wrapper_5_4 = "</select><i class='arrowDown icon-ic_keyboard_arrow_down_24px'></i></form></a></li>";
         var wrapper_5 = wrapper_5_1 + wrapper_5_2 + wrapper_5_4;
         var wrapper_end = "</ul><div style='margin-bottom: 24px'><a  class='next button green' id='Page1_Next' name='page_to_2'>下 一 步</a></div></div><script src='js/lib/sidebarEffects.js'></script><script src='js/lib/classie.js'></script>";
 
@@ -125,11 +125,13 @@ var myTable = {
         //终端库存统计
         var wrapper_1_5 = "<li class='more-content'><a class='next' name='page_to_2_4'><i class='icon-satchel'></i><p>终端库存统计</p></a></li>";
         //零销量预警统计
-        var wrapper_1_6 = "<li class='more-content'><a class='next' name='page_to_2_6'><i class='icon-electronic_megaphone'></i><p>零销量预警统计</p></a></li>";
+        var wrapper_1_6 = "<li class='more-content'><a class='next' name='page_to_2_5'><i class='icon-electronic_megaphone'></i><p>零销量预警统计</p></a></li>";
         //排队机客流监控
-        var wrapper_1_7 = "<li class='more-content'><a class='next'><i class='icon-users_three'></i><p>排队机客流监控</p></a></li>";
+        var wrapper_1_7 = "<li class='more-content'><a class='next' name='page_to_2_6'><i class='icon-users_three'></i><p>排队机客流监控</p></a></li>";
+        //营业厅台账
+        var wrapper_1_8 = "<li class='more-content'><a class='next' name='page_to_2_7'><i class='icon-approximately'></i><p>营业厅台账</p></a></li>";
         var wrapper_end = "</ul></div>";
-        var wrapper_1 = wrapper_1_1 + wrapper_1_2 + wrapper_1_3 + wrapper_1_4 + wrapper_1_5 + wrapper_1_6 + wrapper_1_7;
+        var wrapper_1 = wrapper_1_1 + wrapper_1_2 + wrapper_1_3 + wrapper_1_4 + wrapper_1_5 + wrapper_1_6 + wrapper_1_7+wrapper_1_8;
 
         var head = head1;
         var wrapper = wrapper_1 + wrapper_end;
@@ -235,11 +237,11 @@ var myTable = {
     },
     setPage_myTable_2_3: function () {
         //第3页
-        var head1 = "<button data-effect='st-effect' class='back' name='page_to_2'><i class='icon-ic_keyboard_arrow_left_24px'></i></button><span>门店销量指针统计</span>";
+        var head1 = "<button data-effect='st-effect' class='back' name='page_to_2'><i class='icon-ic_keyboard_arrow_left_24px'></i></button><span>门店销量指标统计</span>";
         var wrapper_1_1 = "<div class='w-container clearfix'><form class='form_drop_down' id='saleOPtion'>";
         var wrapper_1_2="<select style='padding: 6px 12px;'><option value='' selected='true' disabled='true'>选择业务类型</option>"
         var wrapper_1_3="<option value='' name='0'>移动</option><option value='' name='1'>宽带</option><option value='' name='2'>终端</option>"
-        var wrapper_1_4="</select></form>"
+        var wrapper_1_4="</select><i class='arrowDown icon-ic_keyboard_arrow_down_24px'></i></form>"
         var wrapper_1 = wrapper_1_1 + wrapper_1_2+wrapper_1_3+wrapper_1_4;
 
 
@@ -359,6 +361,32 @@ var myTable = {
         $(".container").html(wrapper);
 
         Set_Page_Info.set_page2_6info();
+        click_Evrnt.page_convert();
+    },
+
+    setPage_myTable_2_7: function () {
+        //第3页
+        var head1 = "<button data-effect='st-effect' class='back' name='page_to_2'><i class='icon-ic_keyboard_arrow_left_24px'></i></button><span>营业厅台账</span>";
+
+        var wrapper_1_1 = "<div class='w-container clearfix'><form class='form_drop_down' id='busSelect'><select style='padding: 6px 12px;'>";
+        var wrapper_1_2 = "<option value='' name='0' selected='true' disabled='true'>选择数据来源 [ 默认CRM ]</option>";
+        var wrapper_1_3 = "<option value='' name='0'>CRM</option><option value='' name='1'>IAM</option><option value='' name='2'>OCS</option>";
+        var wrapper_1_4 = "</select><input id='busDateinput' style='padding: 6px 12px;' type='date' placeholder=''><i class='arrowDown1 icon-ic_keyboard_arrow_down_24px'></i><i class='arrowDown2 icon-ic_keyboard_arrow_down_24px'></i></form><a id='selectButton' class='next button green'>搜  索</a>";
+        var wrapper_1 = wrapper_1_1 + wrapper_1_2+wrapper_1_3+wrapper_1_4;
+
+        var wrapper_2_1 = "<div id='busHallLedger' class='Detailed_box'>";
+        var wrapper_2_2 = "<ul><li><span>门店名称</span><span>金额</span></li><ul id='busLedgerLister'>";
+        var wrapper_2_3 = "<li><span>黄陂南路店</span><span>12元</span></li>";
+        var wrapper_2 = wrapper_2_1 + wrapper_2_2+wrapper_2_3;
+
+        var wrapper_end = "</ul></ul></div></div>";
+        var head = head1;
+        var wrapper = wrapper_1+wrapper_2+wrapper_end;
+
+        $(".header").html(head);
+        $(".container").html(wrapper);
+
+        Set_Page_Info.set_page2_7info();
         click_Evrnt.page_convert();
     }
 };

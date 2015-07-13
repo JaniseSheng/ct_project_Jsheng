@@ -12,7 +12,7 @@ var Ajax_Store_Sales = {
     ENDDATE: ""
 };
 
-//门店销量指针统计
+//门店销量指标统计
 var Ajax_Store_Sales_Count = {
 	STOREID:"",
 	BUSTYPE:"移动",
@@ -35,6 +35,12 @@ var Ajax_Machine_Table = {
     DATE: ""
 }
 
+//门店销量指标统计
+var Ajax_BusHallLedger_Content = {
+    STOREID:"",
+    BUSTYPE:"0",
+    STARTDATE:""
+}
 
 //ajax url地址列表
 var Ajax_Url_Link = {
@@ -52,7 +58,9 @@ var Ajax_Url_Link = {
     //零销量报表查询
     ZeroReport_Url: "/service/1/ZeroReport/query",
     //排队机客流量监控
-    Top10_Url: "/service/1/top10/queryTop"
+    Top10_Url: "/service/1/top10/queryTop",
+    //营业厅台账
+    BusHallLedger_url:"/service/1/ods/query"
 };
 
 //ajax 回调函数
@@ -106,6 +114,12 @@ var Ajax_CallBack = {
         Page2_6_Content_Info = e;
         console.log(Page2_6_Content_Info);
         Set_Page_Info.set_page2_6info_display();
+    },
+    //营业厅台账
+    Get_Page2_7_content: function (e) {
+        Page2_7_Content_Info = e;
+        console.log(Page2_6_Content_Info);
+        Set_Page_Info.set_page2_7info_display();
     }
 };
 
@@ -151,6 +165,10 @@ var Page2_5_Content_Info = {
 
 //排队机客流监控
 var Page2_6_Content_Info = {
+}
+
+//营业厅台账
+var Page2_7_Content_Info = {
 }
 
 //设置页面信息--定义临时数组-------------------
@@ -332,6 +350,11 @@ var Set_Page_Info = {
         $("#list li:eq(5) a").click(function () {
             myTable.setPage_myTable_2_6();
         });
+
+        //进入营业厅台账(7)
+        $("#list li:eq(6) a").click(function () {
+            myTable.setPage_myTable_2_7();
+        });
     },
     //第2——1 页面事件
     set_page2_1_info: function () {
@@ -507,8 +530,8 @@ var Set_Page_Info = {
             areaname[i]=Page2_3_Content_Info[i].TEAMNAME;//获取区域名称
             $(".saleIndexList").append(" <li class='more-content'><a><select style='padding: 6px 12px;'></select><i>"+rank+"</i><span>日销售:<span>"+daySaleMunber+"</span></span><span>月销售:<span>"+monSaleMunber+"</span></span><span>销售指标:<span>"+scaleIndex+"</span></span><span>与上月同期环比:<span>"+oldMonCompare+"</span></span></a></li>")
             $(".saleIndexList .more-content a select").html("");
-            console.log("storeName="+storeName);
-            console.log("areaname="+areaname);
+            console.log(storeName);
+            console.log(areaname);
         });
 
         $.each(Page2_3_Content_Info,function(i){
@@ -597,6 +620,28 @@ var Set_Page_Info = {
                 $(".machine_flow_Detailed .Common_text").eq(i).css("color", "red");
             }
         }
+    },
+    set_page2_7info : function(){
+        $("#busLedgerLister").html("");
+        $("#busDateinput").val(other_Fac._getBeforeDate(1));
+        var busType = "0";
+        var startday=other_Fac._getBeforeDate(1);
+        $("#busSelect select").change(function (){
+            busType = $("#saleOPtion select option:selected").attr("name");
+        });
+        $("#selectButton").click(function (){
+            var str = $("#busDateinput").val();
+            startday = str.replace(/-/g,"");
+            other_Fac.Page_2_7_settime_Ajax(busType,startday);
+        });
+    },
+    set_page2_7info_display : function(){
+        $.each(Page2_7_Content_Info, function (i){
+            var storename = Page2_7_Content_Info[i].STORENAME;
+            var storeMoney = Page2_7_Content_Info[i].MONEY;
+            var content = "<li><span>"+storename+"</span><span>"+storeMoney+"</span></li>"
+            $("#busLedgerLister").append(li_content);
+        });
     }
 }
 
@@ -656,6 +701,16 @@ var other_Fac = {
     },
     Page_2_6_settime_Ajax: function () {
         queryData.ajax(Ajax_Machine_Table, Ajax_Url_Link.Top10_Url, Ajax_CallBack.Get_Page2_6_content);
+    },
+    //门店销量指针统计
+    Page_2_7_settime_Ajax: function (_BUSTYPE,_STARTTIME) {
+        Ajax_BusHallLedger_Content.STOREID = Load_Store_ID.STORE_ID;
+        Ajax_BusHallLedger_Content.BUSTYPE = _BUSTYPE;
+        Ajax_BusHallLedger_Content.STARTDATE=_STARTTIME;
+        console.log(Ajax_BusHallLedger_Content.STOREID);
+        console.log(_BUSTYPE);
+        console.log(_STARTTIME);
+        queryData.ajax(Ajax_BusHallLedger_Content, Ajax_Url_Link.BusHallLedger_url, Ajax_CallBack.Get_Page2_7_content);
     },
     set_table: function (_obj_name, _data, _mobile, _broadband, _terminal, addothername) {
         $(_obj_name).html("");
