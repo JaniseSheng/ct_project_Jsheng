@@ -35,7 +35,7 @@ var Ajax_Machine_Table = {
     DATE: ""
 }
 
-//门店销量指标统计
+//营业厅台账
 var Ajax_BusHallLedger_Content = {
     STOREID:"",
     BUSTYPE:"0",
@@ -714,23 +714,37 @@ var other_Fac = {
     },
     set_table: function (_obj_name, _data, _mobile, _broadband, _terminal, addothername) {
         $(_obj_name).html("");
+        var mobileTotal=0;
+        var BroadbandTotal=0;
+        var TerminalTotal=0;
         for (var i = 0; i < _data.length; i++) {
             var timeindex = _data[i];
             var mobile_index = _mobile[i];
             var Broadband_index = _broadband[i];
             var Terminal_index = _terminal[i];
+            mobileTotal=mobileTotal+parseFloat(mobile_index);
+            BroadbandTotal=BroadbandTotal+parseFloat(Broadband_index);
+            TerminalTotal=TerminalTotal+parseFloat(Terminal_index);
             var li_content = "<li><span>" +timeindex+":00</span><span>" + mobile_index + "</span><span>" + Broadband_index + "</span><span>" + Terminal_index + "</span></li>";
             $(_obj_name).append(li_content);
         }
+        //设置总计
+        var contentTotal = "<li><span>总计</span><span>" + mobileTotal + "</span><span>" + BroadbandTotal + "</span><span>" + TerminalTotal + "</span></li>";
+        $(_obj_name).append(contentTotal);
     },
     set_table2_2: function (_obj_name, _data, _mobile) {
         $(_obj_name).html("");
+        var mobileTotal=0;
         for (var i = 0; i < _data.length; i++) {
             var timeindex = _data[i];
             var mobile_index = _mobile[i];
             var li_content = "<li><span>" + timeindex + "</span><span>" + mobile_index + "</span></li>";
+            mobileTotal=mobileTotal+parseFloat(mobile_index);
             $(_obj_name).append(li_content);
         }
+        //设置总计
+        var contentTotal = "<li><span>总计</span><span>" + mobileTotal + "</span></li>";
+        $(_obj_name).append(contentTotal);
     },
     Echart: function (Chart_Content, Chart_date, Chart_Tip_name) {
         require.config({
