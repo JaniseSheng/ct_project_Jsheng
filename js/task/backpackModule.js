@@ -162,7 +162,7 @@ var backpackModule = (function (queryData) {
             LOGIN_ID: loginUser.LOGIN_ID,
             TASK_ID: taskid
         };
-        queryData.ajax(_tmpdata, "/service/1/zxplan/zxPlan/zxPlanfinished", callback);
+        queryData.ajax(_tmpdata, "/service/1/zxplan/zxPlanFinished", callback);
     };
     /**
      * 专项任务上传数据（专项模版）

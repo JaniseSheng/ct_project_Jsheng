@@ -1,10 +1,9 @@
 //服务器请求地址
 
-//var baseQuestUrl = "http://10.145.205.75:8082/entityChannel-web";
-//var baseQuestUrl = "http://222.68.185.232:9080/EntityChannelInteface";
+// var baseQuestUrl = "http://localhost:8080/entityChannel-web";
+// var baseQuestUrl = "http://222.68.185.232:9080/EntityChannelInteface";
 var baseQuestUrl = "http://happyfish2010.oicp.net:8082/entityChannel-web";
-//var baseQuestUrl = "http://10.145.205.75:8082/entityChannel-web";
-
+// var baseQuestUrl = "http://10.145.205.75:8082/entityChannel-web";
 
 //loading动画
 function loading(event) {
@@ -94,29 +93,19 @@ var uploadImage = (function ($, window) {
             contentType: false,
             processData: false,
             success: function (rs) {
-                callback(rs);
+                if (rs.RESPCODE === "-1") {
+                    alert(rs.RESPMSG);
+                } else if (rs.RESPMSG === "0") {
+                    callback(rs.RESULT);
+                }
             },
             error: function (e) {
-                callback(e);
+                throw new Error(e);
             }
         });
     }
     return uploadImage;
 })($, window);
-
-function getTemplate(tmpUrl) {
-    var template = "";
-    $.ajax({
-        type: 'get',
-        url: tmpUrl,
-        async: false,
-        dateType: "text",
-        success: function (e) {
-            template = e;
-        }
-    });
-    return template;
-}
 
 
 //利用经纬度进行两地的距离计算
@@ -167,7 +156,36 @@ var dateTools = (function () {
         }
         return (String(nowYear) + String(nowMonth) + String(nowDay));
     }
+    
+    // 求两个时间的天数差 日期格式为 YYYY-MM-dd  
+    function daysBetween(DateOne, DateTwo) {
+        var OneMonth = DateOne.substring(5, DateOne.lastIndexOf('-'));
+        var OneDay = DateOne.substring(DateOne.length, DateOne.lastIndexOf('-') + 1);
+        var OneYear = DateOne.substring(0, DateOne.indexOf('-'));
 
+        var TwoMonth = DateTwo.substring(5, DateTwo.lastIndexOf('-'));
+        var TwoDay = DateTwo.substring(DateTwo.length, DateTwo.lastIndexOf('-') + 1);
+        var TwoYear = DateTwo.substring(0, DateTwo.indexOf('-'));
+
+        var cha = ((Date.parse(OneMonth + '/' + OneDay + '/' + OneYear) - Date.parse(TwoMonth + '/' + TwoDay + '/' + TwoYear)) / 86400000);
+        return Math.abs(cha);
+    }  
+    //+---------------------------------------------------  
+    //| 字符串转成日期类型   
+    //| 格式 MM/dd/YYYY MM-dd-YYYY YYYY/MM/dd YYYY-MM-dd  
+    //+---------------------------------------------------  
+    function StringToDate(DateStr) {
+
+        var converted = Date.parse(DateStr);
+        var myDate = new Date(converted);
+        if (isNaN(myDate)) {   
+            //var delimCahar = DateStr.indexOf('/')!=-1?'/':'-';  
+            var arys = DateStr.split('-');
+            myDate = new Date(arys[0], --arys[1], arys[2]);
+        }
+        return myDate;
+    }  
+    
     //字符串转成 yyyy-MM-dd
     function strToDateFormat(str) {
         var myyear = str.slice(0, 4);
@@ -361,3 +379,44 @@ var gettraverse = (function () {
     return gettraverse;
 })();
 
+var getResultArray = (function () {
+    var arr = [];
+    function getArrayOfResult(key, result) {
+        getArray(key, result);
+        return arr;
+    }
+    function getArray(key, result) {
+        var obj = result;
+        if (key in obj) {
+            arr.push(obj);
+        }
+
+        if (obj instanceof Array) {
+            for (var i = 0, len = obj.length; i < len; i++) {
+                var item = obj[i];
+                if (key in item) {
+                    arr.push(item);
+                }
+                for (var k in item) {
+                    var it = item[k];
+                    if (it instanceof Array) {
+                        arguments.callee(key, it);
+                    }
+                }
+                //                if (key in item) {
+                //                    arr.push(item);
+                //                }
+            }
+        } else {
+            for (var kk in obj) {
+                var is = obj[kk];
+                if (is instanceof Array) {
+                    arguments.callee(key, is);
+                }
+            }
+        }
+
+    }
+    return getArrayOfResult;
+
+})();

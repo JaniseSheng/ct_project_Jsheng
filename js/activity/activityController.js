@@ -4,7 +4,7 @@
  * @type activityController_L4.activityControllerAnonym$0|Function
  */
 var activityController = (function (activityView, $, window, queryData) {
-    "use strict";
+    //    "use strict";
 
     var user = {};
     var currentpage = 1;
@@ -407,10 +407,10 @@ var activityController = (function (activityView, $, window, queryData) {
                 var _scriptname = info[i].SCRIPT_NAME;
                 var _scriptupdatedate = info[i].SCRIPT_UPDATE_DATE;
                 var _scriptupdateman = info[i].SCRIPT_UPDATE_MAN;
-                div += '<li class="more-content"><a class="next" name="page_to_2_3_1"><i class="yellow icon-ic_star_24px"></i><p>[专营活动]双节营销活动工作布置V2</p><span>更新时间: 2015-05-12</span><span>袁俊</span></a></li>';
+                div += '<li class="more-content"><a class="next" name="page_to_2_3_1"><i class="yellow icon-ic_star_24px"></i><p>' + _scriptname + '</p><span>更新时间:' + _scriptupdatedate + '</span><span>' + _scriptname + '</span></a></li>';
             }
 
-            $('.list').html(div);
+            $('#list').html(div);
 
             $('.more-content').on('click', function () {
                 var _index = $('.more-content').index(this);
@@ -445,9 +445,11 @@ var activityController = (function (activityView, $, window, queryData) {
                     var _storename = info[i].STORENAME;
                     div += '<li class="target-content"><a name="page_to_2_"><i class="yellow icon-ic_star_outline_24px"></i><p>' + _channelname + '</p><p>北区</p><p>' + _storename + '</p><ul><li><h4>阶段:</h4><span>' + _stage + '</span></li><li><h4>数量:</h4><span>' + _num + '</span></li></ul><ul><li><span>开始时间：' + _begindate + '</span></li><li><span>结束时间：' + _enddate + '</span></li></ul><div class="state"></div></a></li>';
                 }
+            } else {
+                div = '<li class="target-content"><a name="page_to_2_">' + "活动已结束或者无相关活动目标" + '</a></li>';
             }
 
-            div = '<li class="target-content"><a name="page_to_2_">' + "活动已结束或者无相关活动目标" + '</a></li>';
+
 
             $('#list').html(div);
         });

@@ -43,8 +43,11 @@ var element = (function () {
             taskTitle = tasks[i].TASKTITLE;
             taskType = tasks[i].TASKTYPE;
             if (isFinish === "0") {
+                div += '<li class="sub-content" style="display:none;"><a class="next" name="page_to_2"><i class="icon-information"></i><p>' + taskTitle + '</p><span>' + taskDate + '</span></a></li>';
+            } else {
                 div += '<li class="sub-content"><a class="next" name="page_to_2"><i class="icon-information"></i><p>' + taskTitle + '</p><span>' + taskDate + '</span></a></li>';
             }
+
         }
         return div;
     }
@@ -63,7 +66,7 @@ var element = (function () {
         storeName = store.STORE_NAME;
         var div = '';
         div += '<li><i class="icon-home"></i><p>所在门店：</p><span>' + storeName + '</span></li><li><i class="icon-net_closed"></i><p>所属渠道：</p><span>' + storeDepartment + '</span></li>';
-        div += '<li><i class="icon-map_route"></i><p>门店地址：</p><span>' + storeArea + '</span></li><li><i class="icon-user"></i><p>负责导购：</p><span>' + storeManager + '</span></li>';
+        div += '<li><i class="icon-map_route"></i><p>门店地址：</p><span>' + storeAddress + '</span></li><li><i class="icon-user"></i><p>负责导购：</p><span>' + storeManager + '</span></li>';
         return div;
     }
 
@@ -140,7 +143,7 @@ var element = (function () {
                         CLASSNAME: name,
                         ITEMLIST: []
                     });
-                    div1 += '<li><h4 id="real_Name">' + name + '</h4><ul>';
+                    div1 += '<li><h4 id="real_Name">' + name + '</h4><ul class="subul">';
                     for (var b = 0; b < itemList1.length; b++) {
                         var title = itemList1[b].TITLE;
                         var introduce = itemList1[b].INTRODUCE;
@@ -189,7 +192,7 @@ var element = (function () {
         var needPhotoHtml = '', optionsHtml = '', specialHtml = '';
         //加分项
         if (isSpecial === "1") {
-            specialHtml += '';
+            specialHtml += '<span class="icon-favorites"></span>';
         }
         //判断是否拍照
         if (isNeedPhoto === "1") {
@@ -198,7 +201,7 @@ var element = (function () {
         //生成select的option项
         if (itemType === "0") {
             //是否项 
-            if (defaultScore === '0') {
+            if (defaultScore === '0' || defaultScore === "") {
                 optionsHtml += '<option value="0" selected="selected">不合格</option>';
                 optionsHtml += '<option value="1">合格</option>';
             } else if (defaultScore === '1') {
@@ -290,10 +293,14 @@ var element = (function () {
                     //                    });
 
                     var subPage = getHistorySubsTypePage(itemList);
-
+                    //如果返回的备注里没有内容，则不显示备注框
+                    var textDispaly = "display:block";
+                    // if (remarkInfo === "") {
+                    //     textDispaly = "display:none";
+                    // }
                     div1 += '<li><h2>' + subPage.specialHtml + title + '</h2>';
                     div1 += '<form><select disabled="disabled">' + subPage.optionsHtml + '</select></form>';
-                    div1 += '<span>' + introduce + '</span><textarea name="content" placeholder="备注:">' + remarkInfo + '</textarea>' + subPage.needPhotoHtml + '</li>';
+                    div1 += '<span>' + introduce + '</span><textarea name="content" style="'+textDispaly+'" placeholder="备注:">' + remarkInfo + '</textarea>' + subPage.needPhotoHtml + '</li>';
                 }
                 div1 += '</ul></div>';
                 //CHILDRENLIST
@@ -315,7 +322,7 @@ var element = (function () {
                     //                        CLASSNAME: name,
                     //                        ITEMLIST: []
                     //                    });
-                    div1 += '<li><h4 id="real_Name">' + name + '</h4><ul>';
+                    div1 += '<li><h4 id="real_Name">' + name + '</h4><ul class="subul">';
                     for (var b = 0; b < itemList1.length; b++) {
                         var title = itemList1[b].TITLE;
                         var introduce = itemList1[b].INTRODUCE;
@@ -332,9 +339,13 @@ var element = (function () {
                         //                        });
 
                         var subPage = getHistorySubsTypePage(itemList1[b]);
-
+                        //如果返回的备注里没有内容，则不显示备注框
+                        var textDispaly = "display:block";
+                        // if (remarkInfo === "") {
+                        //     textDispaly = "display:none";
+                        // }
                         div1 += '<li><h5>' + subPage.specialHtml + title + '</h5><form><select style="float:right" disabled="disabled">' + subPage.optionsHtml + '</select></form>';
-                        div1 += '<span>' + introduce + '</span><textarea name="content" placeholder="备注:">' + remarkInfo + '</textarea>' + subPage.needPhotoHtml + '</li>';
+                        div1 += '<span>' + introduce + '</span><textarea name="content" style="'+textDispaly+'" placeholder="备注:">' + remarkInfo + '</textarea>' + subPage.needPhotoHtml + '</li>';
                     }
                     div1 += '</ul></li>';
                 }
@@ -344,7 +355,7 @@ var element = (function () {
         return {
             titleTable: div,
             infoTable: div1
-                    //            taskRs: taskRs
+            //            taskRs: taskRs
         };
     }
     //
@@ -371,13 +382,13 @@ var element = (function () {
         var isQuality = itemList.IS_QUALITY;
         var itemType = itemList.ITEM_TYPE;
         var score = itemList.SCORE;
-
+        var isSpecial = itemList.IS_SPECIAL;
         var images = itemList.IMAGES;
         var needPhotoHtml = '', optionsHtml = '', specialHtml = '';
         //加分项
-        // if (isSpecial !==undefined && isSpecial === "1") {
-        //     specialHtml += '';
-        // }
+        if (isSpecial !== undefined && isSpecial === "1") {
+            specialHtml += '<span class="icon-favorites"></span>';
+        }
         //判断是否存在照片
         if (isHaveImage === "1") {
             for (var t = 0; t < images.length; t++) {

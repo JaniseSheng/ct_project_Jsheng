@@ -3,7 +3,7 @@
  * @type activityModule_L4.activityModuleAnonym$0|Function
  */
 var activityModule = (function(queryData, $, window) {
-    "use strict";
+//    "use strict";
     /**
      * @description 营销活动列表
      * @param  {[type]}   loginid     登录id

@@ -39,7 +39,7 @@ var backpackView = (function () {
         //日历
         var panel2_sub_panel1_1 = "<div class='sub-panel activ'><div class='calendar' id='fullcalendar'></div><div id='calendar_state'><span>未完成</span><span>已完成</span><span>今天</span></div><ul id='list'>";
         var panel2_sub_panel1_2_1 = "<li><h2>搜索结果</h2><ul id='js_trouble'>";
-        var panel2_sub_panel1_2_2 = "<li class='sub-content'><a class='next' name='page_to_2'><i class='icon-check_o'></i><p>上海电信泰兴路营业厅上海电信泰兴路营业厅</p><span>2015-05-12</span></a></li>";
+        var panel2_sub_panel1_2_2 = "<li class='sub-content'><a class='next' name='page_to_2'><i class='icon-check_o'></i><p>null</p><span>2015-05-12</span></a></li>";
         var panel2_sub_panel1_2_3 = "</ul></li><li><h2>专项任务</h2><ul id = 'js_special'><ul></li>";
         var panel2_sub_panel1_2 = panel2_sub_panel1_2_1 + panel2_sub_panel1_2_2 + panel2_sub_panel1_2_3;
         var panel2_sub_panel1 = panel2_sub_panel1_1 + panel2_sub_panel1_2;
@@ -57,7 +57,7 @@ var backpackView = (function () {
         //巡店时间
         var panel2_sub_panel2_5_1 = "</select></form><div><i class='icon-calendar'></i><p>巡店时间：</p></div><form><input id='js_plan_Starttime' type='date' name='time' placeholder='起始日期'/><input id='js_plan_endtime' type='date' name='time' placeholder='结束日期'/></form><a id='js_plan_Search' class='button green next' name='page_to_2'>搜 索</a><ul id='sub-list'>";
         //计划任务
-        var panel2_sub_panel2_6_1 = "<li><h2>计划任务</h2><ul>";
+        var panel2_sub_panel2_6_1 = "<li><h2>搜索结果</h2><ul>";
 //        var panel2_sub_panel2_6_2 = "<li class='sub-content'><a class='next' name='page_to_2'><i class='icon-check_o'></i><p>上海电信泰兴路营业厅上海电信泰兴路营业厅</p><span>2015-05-12</span></a></li>";
         var panel2_sub_panel2 = panel2_sub_panel2_1 + panel2_sub_panel2_2_1 + panel2_sub_panel2_2_2 + panel2_sub_panel2_3_1 + panel2_sub_panel2_3_2 + panel2_sub_panel2_4_1 + panel2_sub_panel2_4_2 + panel2_sub_panel2_5_1 + panel2_sub_panel2_6_1;
 
@@ -89,11 +89,11 @@ var backpackView = (function () {
         var wrapper_head = "<div class='w-container clearfix'><ul class='act-grid'>";
         var wrapper_content_1 = "<li><p>签到地点</p><form><select id='js_select' style='padding: 6px 12px;'>";
         var wrapper_content_2 = "<option value='' selected='true' disabled='true'>选择签到门店</option>";
-        var wrapper_content_3 = "<option value=''>门店1</option><option value=''>门店2</option><option value=''>门店3</option></select></form></li>";
-        var wrapper_content_4 = "<li><p>目的地址</p><span id='js_address'>静安区泰兴路218号</span></li>";
+        var wrapper_content_3 = "<option value=''>门店1</option></select></form></li>";
+        var wrapper_content_4 = "<li><p>目的地址</p><span id='js_address'>null</span></li>";
         var wrapper_content_5 = "<li><p>我的位置</p><span>获取中......</span></li></ul><div class='store_sgin'>";
         var wrapper_content_6 = "<div><a class='button purple'>定&nbsp;&nbsp;&nbsp;&nbsp;位</a></div>";
-        var wrapper_content_7 = "<a class='pic_file button yellow'><form id='js_img' enctype='multipart/form-data'><input class='file_input' type='file' id='js_img_1' name='IMAGEFILE'  accept='image/*' capture'camera'></form>拍  照</a>";
+        var wrapper_content_7 = "<a class='pic_file button yellow'><form id='js_img' enctype='multipart/form-data'><input class='file_input' type='file' id='js_img_1' name='IMAGEFILE'  accept='image/*' capture'camera'></form>拍照并签到</a>";
         var wrapper_content_8 = "<mark>使用帮助:</mark><mark>使用定位功能前,请确保打开手机的GPS功能</mark>";
         var wrapper_End = "</div></div>";
 
@@ -114,8 +114,8 @@ var backpackView = (function () {
         var wrapper_head = "<div class='w-container clearfix'><ul class='act-grid'>";
         var wrapper_content_1 = "<li><p>签出地点</p><form><select style='padding: 6px 12px;'>";
         var wrapper_content_2 = "<option value='' selected='true' disabled='true'>选择签到出店</option>";
-        var wrapper_content_3 = "<option value=''>门店1</option><option value=''>门店2</option><option value=''>门店3</option></select></form></li>";
-        var wrapper_content_4 = "<li><p>目的地址</p><span>静安区泰兴路218号</span></li>";
+        var wrapper_content_3 = "<option value=''>null</option></form></li>";
+        var wrapper_content_4 = "<li><p>目的地址</p><span>null</span></li>";
         var wrapper_content_5 = "<li><p>我的位置</p><span>获取中......</span></li></ul><div class='store_sgin'>";
         var wrapper_content_6 = "<div><a class='button purple'>定&nbsp;&nbsp;&nbsp;&nbsp;位</a></div>";
         var wrapper_content_7 = "<div><a class='button green'>确认签出</a></div>";
@@ -138,32 +138,32 @@ var backpackView = (function () {
 
         var wrapper_1 = "<div id='scroller' class='w-container clearfix'><ul class='infor'>";
         //所在门店
-        var store_1 = "<li><i class='icon-home'></i><p>所在门店：</p><span>共连上海莲花南路营业厅</span></li>";
+        var store_1 = "<li><i class='icon-home'></i><p>所在门店：</p><span>null</span></li>";
         //所属渠道
-        var store_2 = "<li><i class='icon-net_closed'></i><p>所属渠道：</p><span>共连上海莲花南路营业厅</span></li>";
+        var store_2 = "<li><i class='icon-net_closed'></i><p>所属渠道：</p><span>null</span></li>";
         //门店地址
-        var store_3 = "<li><i class='icon-map_route'></i><p>门店地址：</p><span>莲花南路1098号莲花南路1098号莲花南路1098号莲花南路1098号莲花南路1098号</span></li>";
+        var store_3 = "<li><i class='icon-map_route'></i><p>门店地址：</p><span>null</span></li>";
         //负责导购
-        var store_4 = "<li><i class='icon-user'></i><p>负责导购：</p><span>共连上海莲花南路营业厅</span></li>";
+        var store_4 = "<li><i class='icon-user'></i><p>负责导购：</p><span>null</span></li>";
         //storeh合集
         var store = store_1 + store_2 + store_3 + store_4;
         //tab_panel1_head
         var tab_panel_head = "</ul><div class='tab-panels'><ul id='con-tabs' class='tabs'>";
         //tabpanel列表部分
-        var tab_panel1_li = "<li><a rel='panel1' class='SearchStore tab activ'>活动露出</a></li>";
-        var tab_panel2_li = "<li><a rel='panel2' class='SearchStore tab'>活动执行</a></li>";
-        var tab_panel3_li = "<li><a rel='panel3' class='SearchStore tab'>销售方法</a></li>";
-        var tab_panel4_li = "<li><a rel='panel4' class='SearchStore tab'>终端上柜及备货</a></li>";
-        var tab_panel5_li = "<li><a rel='panel4' class='SearchStore tab'>专项工作</a></li>";
+        var tab_panel1_li = "<li><a rel='panel1' class='SearchStore tab activ'>null_1</a></li>";
+        var tab_panel2_li = "<li><a rel='panel2' class='SearchStore tab'>null_2</a></li>";
+        var tab_panel3_li = "<li><a rel='panel3' class='SearchStore tab'>null_3</a></li>";
+        var tab_panel4_li = "<li><a rel='panel4' class='SearchStore tab'>null_4</a></li>";
+        var tab_panel5_li = "<li><a rel='panel4' class='SearchStore tab'>null_5</a></li>";
         var tab_panel_end = "</ul>";
         //tabpanel合集
         var tab_panel = tab_panel_head + tab_panel1_li + tab_panel2_li + tab_panel3_li + tab_panel4_li + tab_panel5_li + tab_panel_end;
 
         //panel1内容部分
         var panel1_div_head = "<div id = 'js_data'><div class='panel activ'><ul class='assessment'>";
-        var panel1_div_li_head = "<li><h2>检查终端库存是否达到要求</h2><form><select>";
+        var panel1_div_li_head = "<li><h2>null</h2><form><select>";
         var panel1_div_li_option = "<option value=''>0</option>";
-        var panel1_div_li_content = "</select></form><span>少一台扣1分，扣完为止</span><textarea name='content' placeholder='备注:'></textarea><mark class='form-message'>Statement Or Account Of The Main Points Of Something</mark></li>";
+        var panel1_div_li_content = "</select></form><span>null</span><textarea name='content' placeholder='备注:'></textarea></li>";
         var panel1_div_end = "</ul></div>";
         //此列表内容可以循环添加使用
         var panel1_div_li = panel1_div_li_head + panel1_div_li_option + panel1_div_li_content;
@@ -172,9 +172,9 @@ var backpackView = (function () {
 
         //panel2内容部分
         var panel2_div_head = "<div class='panel'><ul class='assessment'>";
-        var panel2_div_li_head = "<li><h2>检查终端库存是否达到要求</h2><form><select>";
+        var panel2_div_li_head = "<li><h2>null</h2><form><select>";
         var panel2_div_li_option = "<option value=''>0</option>";
-        var panel2_div_li_content = "</select></form><span>少一台扣1分，扣完为止</span><textarea name='content' placeholder='备注:'></textarea><mark class='form-message'>Statement Or Account Of The Main Points Of Something</mark></li>";
+        var panel2_div_li_content = "</select></form><span>null</span><textarea name='content' placeholder='备注:'></textarea></li>";
         var panel2_div_end = "</ul></div>";
         //此列表内容可以循环添加使用
         var panel2_div_li = panel2_div_li_head + panel2_div_li_option + panel2_div_li_content;
@@ -183,9 +183,9 @@ var backpackView = (function () {
 
         //panel3内容部分
         var panel3_div_head = "<div class='panel'><ul class='assessment'>";
-        var panel3_div_li_head = "<li><h2>检查终端库存是否达到要求</h2><form><select>";
+        var panel3_div_li_head = "<li><h2>null</h2><form><select>";
         var panel3_div_li_option = "<option value=''>0</option>";
-        var panel3_div_li_content = "</select></form><span>少一台扣1分，扣完为止</span><textarea name='content' placeholder='备注:'></textarea><mark class='form-message'>Statement Or Account Of The Main Points Of Something</mark></li>";
+        var panel3_div_li_content = "</select></form><span>null</span><textarea name='content' placeholder='备注:'></textarea></li>";
         var panel3_div_end = "</ul></div>";
         //此列表内容可以循环添加使用
         var panel3_div_li = panel3_div_li_head + panel3_div_li_option + panel3_div_li_content;
@@ -194,9 +194,9 @@ var backpackView = (function () {
 
         //panel4内容部分
         var panel4_div_head = "<div class='panel'><ul class='assessment'>";
-        var panel4_div_li_head = "<li><h2>检查终端库存是否达到要求</h2><form><select>";
+        var panel4_div_li_head = "<li><h2>null</h2><form><select>";
         var panel4_div_li_option = "<option value=''>0</option>";
-        var panel4_div_li_content = "</select></form><span>少一台扣1分，扣完为止</span><textarea name='content' placeholder='备注:'></textarea><mark class='form-message'>Statement Or Account Of The Main Points Of Something</mark></li>";
+        var panel4_div_li_content = "</select></form><span>null</span><textarea name='content' placeholder='备注:'></textarea></li>";
         var panel4_div_end = "</ul></div>";
         //此列表内容可以循环添加使用
         var panel4_div_li = panel4_div_li_head + panel4_div_li_option + panel4_div_li_content;
@@ -205,9 +205,9 @@ var backpackView = (function () {
 
         //panel5内容部分
         var panel5_div_head = "<div class='panel'><h2 id='real_Name'>实名制</h2><ul class='assessment'>";
-        var panel5_div_li_head = "<li><h2>检查终端库存是否达到要求</h2><form><select>";
+        var panel5_div_li_head = "<li><h2>null</h2><form><select>";
         var panel5_div_li_option = "<option value=''>0</option>";
-        var panel5_div_li_content = "</select></form><span>少一台扣1分，扣完为止</span><textarea name='content' placeholder='备注:'></textarea><mark class='form-message'>Statement Or Account Of The Main Points Of Something</mark></li>";
+        var panel5_div_li_content = "</select></form><span>null</span><textarea name='content' placeholder='备注:'></textarea></li>";
         var panel5_div_end = "</ul></div></div>";
 
         //此列表内容可以循环添加使用

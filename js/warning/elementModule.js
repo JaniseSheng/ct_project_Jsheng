@@ -1,14 +1,32 @@
 var elementModule = (function () {
     function getListElement(data) {
-        var div = '', createDate, status, taskId, taskName, list = [];
-        lists = data;
-        for (var i = 0, l = lists.length; i < l; i++) {
+        var div = '', createDate, status, taskId, taskName, list = [], statusIcon, tmpdate;
+        var lists = data;
+        for (var i = lists.length - 1; i >= 0; i--) {
             list.push(lists[i]);
             createDate = lists[i].CREATE_DATE;
             status = lists[i].STATUS;
             taskId = lists[i].TASK_ID;
             taskName = lists[i].TASK_NAME;
-            div += '<li class="sub-content"><a class="next" name="page_to_2"><i class="icon-information"></i><p>' + taskName + '</p><span>' + createDate + '</span></a></li>';
+            // if(status === "0"){
+            //     statusIcon = 'icon-information';
+            // }
+            // if(status === "1"){
+            //     statusIcon = 'icon-check_o';
+            // }
+            // if(status === "2"){
+            //     statusIcon = 'icon-check ';
+            // }
+            // tmpdate = new Date(createDate.split("-"));
+            // var now = new Date();
+            // var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            // if (tmpdate < today) {
+            //     statusIcon = "icon-information_c";
+            // } else {
+            //     statusIcon = "icon-information";
+            // }
+            statusIcon = "icon-information";
+            div += '<li class="sub-content"><a class="next" name="page_to_2"><i class="' + statusIcon + '"></i><p>' + taskName + '</p><span>' + createDate + '</span></a></li>';
         }
 
         return {
@@ -40,6 +58,7 @@ var elementModule = (function () {
         } else {
             $("#js_status").css("background-color", "#3498db");
             $("#js_status").html("已接收");
+            $('.button.green.next').hide();
         }
         $("#js_store_name").html(storeName);
         $("#js_task_name").html(taskName);

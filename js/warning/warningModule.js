@@ -12,16 +12,16 @@ var warningModule = (function () {
         _temp = {
             USER_ID: user.LOGIN_ID
         };
-//        queryData.ajax(_temp, "/service/1/warningDistribute/getNotFeedbackTaskList", callback);
-        $.ajax({
-            url: "json/getNotFeedbackTaskList.json",
-            dataType: "json",
-            data: _temp,
-            type: 'POST',
-            success: function (rs) {
-                callback(rs);
-            }
-        });
+       queryData.ajax(_temp, "/service/1/warningDistribute/getNotFeedbackTaskList", callback);
+        // $.ajax({
+        //     url: "json/getNotFeedbackTaskList.json",
+        //     dataType: "json",
+        //     data: _temp,
+        //     type: 'POST',
+        //     success: function (rs) {
+        //         callback(rs);
+        //     }
+        // });
     }
     /**
      * 取得任务详情
@@ -35,16 +35,16 @@ var warningModule = (function () {
             USER_ID: user.LOGIN_ID,
             TASK_ID: taskId
         };
-//        queryData.ajax(_temp, "/service/1/warningDistribute/getTaskDetail", callback);
-        $.ajax({
-            url: "json/getTaskDetail.json",
-            dataType: "json",
-            data: _temp,
-            type: 'POST',
-            success: function (rs) {
-                callback(rs);
-            }
-        });
+       queryData.ajax(_temp, "/service/1/warningDistribute/getTaskDetail", callback);
+        // $.ajax({
+        //     url: "json/getTaskDetail.json",
+        //     dataType: "json",
+        //     data: _temp,
+        //     type: 'POST',
+        //     success: function (rs) {
+        //         callback(rs);
+        //     }
+        // });
     }
     /**
      * 接受确认

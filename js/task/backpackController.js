@@ -10,7 +10,7 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
 
     var user;
 
-    window.saveData = window.saveData || {};
+    var saveData = saveData || {};
     saveData.today = {};
     saveData.myPlan = {};
     saveData.myPlan.planTask = {};
@@ -100,10 +100,12 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
         var taskinfo = data;
         var taskData = [];
 
+        //显示页面
+        backpackView.setPage_myBackPack_2();
+
         //日常任务和周期任务
         if (taskinfo.TASKTYPE === "0" || taskinfo.TASKTYPE === "1") {
-            //显示页面
-            backpackView.setPage_myBackPack_2();
+
             //门店信息
             storeModule.queryStoreDetail(user, taskinfo.STOREID, function (rs) {
                 console.log(rs);
@@ -136,16 +138,16 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
             });
             //专项任务
         } else if (taskinfo.TASKTYPE === "2") {
-
-            $('.infor').hide();
             backpackModule.specialPlanUnFinish(user, taskinfo.TASKID, function (rs) {
                 console.log(rs);
                 if (rs === "" || rs === undefined) {
-                    
+
                     return null;
                 }
                 //显示页面
                 backpackView.setPage_myBackPack_2();
+                $('.infor').hide();
+
                 //自定义页面模版
                 if (rs.type === 1) {
                     var taskHtml = element.getSimpleSpecialTaskDetailPage(rs);
@@ -157,16 +159,19 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
                     //提交专项任务(自定义模版);
                     $("#js_submit").unbind().on("click", function () {
                         console.log(taskData);
-                        var result = $(".js_textarea").val();
-                        backpackModule.uploadSpecialSimpleTaskData(user, taskinfo.TASKID, taskData.patrolContentType, result, function (e) {
-                            console.log(e);
-                        });
+                        if (confirm("是否提交任务?")) {
+                            var result = $(".js_textarea").val();
+                            backpackModule.uploadSpecialSimpleTaskData(user, taskinfo.TASKID, taskData.patrolContentType, result, function (e) {
+                                console.log(e);
+                            });
+                        }
                     });
 
                     //套用日常和周期任务页面模版
                 } else if (rs.type === 2) {
                     var taskHtml = element.getTaskDetailPage(rs);
                     taskData = taskHtml.taskRs;
+                    console.log(taskData);
                     //显示页面
                     $('#con-tabs').html(taskHtml.titleTable);
                     $('#con-tabs li:first-child a').addClass("activ");
@@ -186,11 +191,21 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
                     //提交专项任务(专项模版);
                     $("#js_submit").unbind().on("click", function () {
                         console.log(taskData);
-                        //模版类型(1.自定义模版,2.专项模版)
-                        var contentType = "2";
-                        backpackModule.uploadSpecialTaskData(user, taskinfo.TASKID, contentType, taskData, function (e) {
-                            console.log(e);
-                        });
+                        if (confirm("是否提交任务?")) {
+                            //把填写的内容保存到taskdata
+                            var result = getTaskData(taskData);
+                            //模版类型(1.自定义模版,2.专项模版)
+                            var contentType = "2";
+                            backpackModule.uploadSpecialTaskData(user, taskinfo.TASKID, contentType, JSON.stringify(result), function (e) {
+                                console.log(e);
+                                console.log("任务提交成功");
+                                alert("任务提交成功");
+                                pageToday();
+                            });
+                        }
+                    });
+                    $(".back").unbind().on("click", function () {
+                        pageToday();
                     });
                 }
             });
@@ -199,22 +214,27 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
         $('#js_submit').on("click", function () {
             console.log(taskData);
             console.log("提交任务");
+            if (confirm("是否提交任务?")) {
+                var result = getTaskData(taskData);
+                console.log(result);
+                backpackModule.uploadTask(user, taskinfo.STOREID, taskinfo.TASKTYPE, taskinfo.TASKID, result, function (rs) {
+                    alert("任务提交成功");
+                    pageToday();
+                    console.log(rs);
+                });
+            }
 
-            var result = getTaskData(taskData);
-            console.log(result);
-            backpackModule.uploadTask(user, taskinfo.STOREID, taskinfo.TASKTYPE, taskinfo.TASKID, result, function (rs) {
-                console.log(rs);
-            });
+
         });
 
-        $('.back').on('click', function () {
+        $(".back").on("click", function () {
             pageToday();
         });
     }
     //日常任务和周期任务处理上传数据
     function getTaskData(data) {
         var rs = data;
-        var arr = gettraverse("ID", rs);
+        var arr = getResultArray("ID", rs);
         for (var i = 0; i < arr.length; i++) {
             var item = arr[i];
             if (item.ID !== undefined) {
@@ -249,10 +269,16 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
                 var html = element.getStoreInfoPage(rs);
                 $('.infor').html(html);
             });
-
-            backpackModule.tourHistory(user, taskinfo.TASKID, function (rs) {
+            
+            //判断如果任务已经完成并且存在RESULTID，那么从RESULTID来查询任务历史信息
+            var tId = taskinfo.TASKID;
+            if(taskinfo.RESULTID){
+                tId = taskinfo.RESULTID
+            }
+            
+            backpackModule.tourHistory(user, tId, function (rs) {
                 console.log(rs);
-                var taskHtml = element.getTaskHistDetailPage(rs);
+                var taskHtml = element.getTaskHistoryDetailPage(rs);
                 console.log(taskHtml.taskRs);
                 $('#con-tabs').html(taskHtml.titleTable);
                 $('#con-tabs li:first-child a').addClass("activ");
@@ -262,7 +288,7 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
             });
 
             //专项任务
-        } else if (taskinfo.TASKTYPE === "2") {
+        } else if (taskinfo.TASKTYPE == "2") {
             console.log(taskinfo);
             backpackView.setPage_myBackPack_2();
             $('.infor').hide();
@@ -270,6 +296,23 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
 
             backpackModule.specialPlanFinish(user, taskinfo.TASKID, function (rs) {
                 console.log(rs);
+                //专项任务的常规任务模版
+                if (rs.type == "2") {
+                    var item = rs.zxPlanContent;
+                    var taskHtml = element.getTaskHistoryDetailPage(item);
+                    //                    console.log(taskHtml.taskRs);
+                    $('.w-container.header span').html("专项任务");
+                    $('#con-tabs').html(taskHtml.titleTable);
+                    $('#con-tabs li:first-child a').addClass("activ");
+                    $('#js_data').html(taskHtml.infoTable);
+                    $('#js_data div:first-child').addClass("activ");
+                    click_Evrnt.select_tab_panel("li .tab", "div .panel");
+                    //专项任务自定义任务模版
+                } else if (rs.type == "1") {
+                    var item = rs.zxPlanContent
+                    $('.w-container.header span').html("专项任务");
+                    $("#scroller").html(item.planContent);
+                }
             });
         }
 
@@ -352,6 +395,7 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
                                         console.log("上传照片成功");
                                         console.log(e);
                                         var imgid = e.IMAGEID;
+                                        
                                         backpackModule.accept(user, select.store.STORE_ID, p2.lat, p2.lng, imgid, function (rs) {
                                             console.log('签到成功');
                                             backpackController.pageToday();
@@ -503,9 +547,9 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
     function upTaskPage(data, dateStr) {
         var info = data;
         var div0 = '',
-                div1 = '',
-                arr0 = [],
-                arr1 = [];
+            div1 = '',
+            arr0 = [],
+            arr1 = [];
         if (info.length > 0) {
             for (var i = 0; i < info.length; i++) {
                 var _taskdate = dateTools.strToDateFormat(info[i].TASKDATE);
@@ -562,13 +606,13 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
             }
         });
     }
-
+    //寻店搜索
     function searchTasks(user) {
         //请求巡店人员
         backpackModule.planUser(user, function (rs) {
             console.log(rs);
             var dinners = rs;
-            var div = '';
+            var div = '<option value="" selected="selected">全部</option>';
             for (var i = 0, l = dinners.length; i < l; i++) {
                 div += '<option value="' + dinners[i].ID + '">' + dinners[i].NAME + '</option>';
             }
@@ -578,9 +622,9 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
             //巡店人员
             employeeEl.html(div);
             //巡店类型
-            typeEl.html('<option value="0">日常</option><option value="1">巡店</option><option value="2">专项</option>');
+            typeEl.html('<option value="0" selected="selected">日常</option><option value="1">巡店</option>');
             //巡店状态
-            stateEl.html('<option value="0">已完成</option><option value="1">未完成</option>');
+            stateEl.html('<option value="0" selected="selected">已完成</option><option value="1">未完成</option>');
             //搜索
             $('#js_plan_Search').on('click', function () {
                 var id, type, state, startDate, endDate;
@@ -593,6 +637,7 @@ var backpackController = (function (backpackModule, backpackView, storeModule, e
                     alert("起始时间大于结束时间，请重试");
                     return;
                 }
+                
                 //通过条件搜索任务
                 backpackModule.planSearch(user, id, startDate, endDate, type, state, function (e) {
                     console.log(e);

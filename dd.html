@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<!-- <script src="js/lib/CryptoJS v3.1.2/components/enc-base64.js"></script> -->
-<!-- 	<script src="js/lib/CryptoJS v3.1.2/rollups/tripledes.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- <script src="js/lib/CryptoJS v3.1.2/components/enc-base64.js"></script> -->
+		<!-- <script src="js/lib/CryptoJS v3.1.2/rollups/tripledes.js"></script>
 	<script src="js/lib/CryptoJS v3.1.2/components/mode-ecb.js"></script> -->
-	<script type="text/javascript" src="js/lib/DES.js"></script>
-	<script type="text/javascript" src="js/lib/base64.js"></script>
-	<script>
- 		function stringToHex (s) {
-		  var r = "0x";
-		  var hexes = new Array ("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f");
-		  for (var i=0; i<s.length; i++) {r += hexes [s.charCodeAt(i) >> 4] + hexes [s.charCodeAt(i) & 0xf];}
-		  return r;
-		}
+		<!--<script type="text/javascript" src="js/lib/DES.js"></script>
+	<script type="text/javascript" src="js/lib/base64.js"></script>-->
+		<script type="text/javascript" src="js/lib/CryptoJS v3.1.2/rollups/tripledes.js"></script>
+		<script type="text/javascript" src="js/lib/CryptoJS v3.1.2/components/mode-ecb.js"></script>
+		<script>
+			// function stringToHex (s) {
+			//   var r = "0x";
+			//   var hexes = new Array ("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f");
+			//   for (var i=0; i<s.length; i++) {r += hexes [s.charCodeAt(i) >> 4] + hexes [s.charCodeAt(i) & 0xf];}
+			//   return r;
+			// }
+	
+			// function hexToString (h) {
+			//   var r = "";
+			//   for (var i= (h.substr(0, 2)=="0x")?2:0; i<h.length; i+=2) {r += String.fromCharCode (parseInt (h.substr (i, 2), 16));}
+			//   return r;
+			// }
+			
+	
+			// //密钥
+			// var key = "BBSBBSBB";
+			// //js和java同时对此字符串进行加密和编码
+			// var message = "1234567890abcdefg一二三四五";
+			
+			// //由后台java生成的密文
+			var javaCiphertext = "lyhTIEm7KIGstB++sLKzn//4m18r91FoWFVRs8vb10LWlrADfgOL0g==";
+			// var ciphertext = des (key, message, 0);
+			// console.log(ciphertext);
+			// document.writeln ("DES Test: " + stringToHex (ciphertext));
+			// var str = stringToHex (ciphertext);
+			// b64 = base64encode(str);
+	
+			// console.log(str);
+			// console.log("通过js的des加密和base64编码生成的密文："+b64);
+			// console.log("通过java的des加密和base64编码生成的密文："+javaCiphertext);
+			
+			
+		var keyHex = CryptoJS.enc.Utf8.parse('BBSBBSBB');
+	    var encrypted = CryptoJS.DES.encrypt('1234567890abcdefg一二三四五', keyHex, {
+	        mode: CryptoJS.mode.CBC,
+	        padding: CryptoJS.pad.Pkcs7
+	    });
+	    console.log(encrypted.toString(), encrypted.ciphertext.toString(CryptoJS.enc.Base64));
+		console.log(javaCiphertext);
+		</script>
+	</body>
 
-		function hexToString (h) {
-		  var r = "";
-		  for (var i= (h.substr(0, 2)=="0x")?2:0; i<h.length; i+=2) {r += String.fromCharCode (parseInt (h.substr (i, 2), 16));}
-		  return r;
-		}
-
-		var key = "BBSBBSBB";
-		var message = "1234567890abcdefg一二三四五";
-		var ciphertext = des (key, message, 1);
-		console.log(ciphertext);
-		document.writeln ("DES Test: " + stringToHex (ciphertext));
-		var str = stringToHex (ciphertext);
-		b64 = base64encode(str);
-
-		console.log(str);
-		console.log(b64);
-	</script>
-</body>
 </html>
